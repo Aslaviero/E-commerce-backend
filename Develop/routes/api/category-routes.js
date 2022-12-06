@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
         },
       ],
     });
-    res.status(200).json(Category);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
       return;
     }
 
-    res.status(200).json(Category);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -47,7 +47,7 @@ router.post("/", (req, res) => {
     Category.create({
       category_name: req.body.category_name,
     });
-    res.status(200).json(Category);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(400).json(err);
   }
