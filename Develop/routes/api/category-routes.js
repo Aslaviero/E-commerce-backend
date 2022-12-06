@@ -31,7 +31,7 @@ router.get("/:id", (req, res) => {
       ],
     });
 
-    if (!Category) {
+    if (!categoryData) {
       res.status(404).json({ message: "No product found under this id!" });
       return;
     }
@@ -75,7 +75,7 @@ router.delete("/:id", (req, res) => {
     Category.destroy({
       where: { id: req.params.id },
     });
-    if (!tripData) {
+    if (!categoryData) {
       res.status(404).json({ message: "No category with this id!" });
       return;
     }
