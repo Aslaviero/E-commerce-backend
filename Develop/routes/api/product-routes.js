@@ -7,12 +7,44 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 router.get("/", (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
+  try {
+    Product.findAll({
+      include: [
+        {
+          model: Category,
+          attributes: ["id", "category_name"],
+        },
+        {
+          model: Tag,
+          attributes: ["id", "tag_name"],
+        },
+      ],
+    });
+    res.status(200).json(productData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // get one product
 router.get("/:id", (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  try {
+    Product.findByPk(req.params.id, {
+      // JOIN with travellers, using the Trip through table
+      include: [{ model: Traveller, through: Trip, as: "location_travellers" }],
+    });
+
+    if (!locationData) {
+      res.status(404).json({ message: "No location found with this id!" });
+      return;
+    }
+
+    res.status(200).json(locationData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // create new product
