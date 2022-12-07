@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { regexp } = require("sequelize/types/lib/operators");
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
 // The `/api/products` endpoint
