@@ -29,6 +29,5 @@ THEN I am able to successfully create, update, and delete data in my database
 - dotenv package
 - Express.js
 
-## Screenshots
-
 ## link
+video link: https://drive.google.com/file/d/1K6AJP4-8ombIGAc3QS64ql7iuwV_fowp/view
